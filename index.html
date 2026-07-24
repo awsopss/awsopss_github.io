@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/portfolio-enhancements.css" rel="stylesheet">
+  <link href="css/portfolio-enhancements.css?v=emerald-dynamic-3" rel="stylesheet">
 
   <style>
     @property --spin {
@@ -23,20 +23,26 @@
        POLISHED PORTFOLIO DESIGN SYSTEM + SAFE ANIMATIONS
        ========================================================= */
     :root{
-      --bg: #f2f6f8;
-      --surface: rgba(255,255,255,.84);
+      --bg: #06150f;
+      --surface: rgba(255,255,255,.86);
       --surface-2: #ffffff;
       --line: rgba(15, 23, 42, .11);
       --text: #0f172a;
       --muted: rgba(15,23,42,.68);
       --muted2: rgba(15,23,42,.52);
 
-      --anime-blue:#2563eb;
-      --anime-cyan:#0f766e;
-      --anime-violet:#1f2937;
-      --dragon-ember:#f97316;
-      --dragon-gold:#f59e0b;
-      --dragon-smoke:#475569;
+      --anime-blue:#0f6b46;
+      --anime-cyan:#16a36a;
+      --anime-violet:#a18445;
+      --dragon-ember:#c5a253;
+      --dragon-gold:#d4af5a;
+      --dragon-smoke:#334155;
+      --accent-sky:#2b8f68;
+      --accent-violet:#8f7a43;
+      --accent-emerald:#1fb978;
+      --accent-rose:#b99245;
+      --accent-indigo:#146c4a;
+      --accent-amber:#d4af5a;
       --anime-ink:#07111f;
       --anime-ice:#f3fbff;
       --ink:#111827;
@@ -67,13 +73,9 @@
       pointer-events: none;
       z-index: -2;
       background:
-        linear-gradient(90deg, rgba(248,250,252,.93) 0 47%, rgba(248,250,252,.72) 66%, rgba(15,23,42,.38) 100%),
-        radial-gradient(ellipse at 78% 20%, rgba(249,115,22,.20), transparent 28%),
-        radial-gradient(ellipse at 82% 54%, rgba(15,23,42,.34), transparent 42%),
-        radial-gradient(ellipse at 18% 16%, rgba(37,99,235,.10), transparent 28%),
-        linear-gradient(115deg, rgba(248,251,255,.93), rgba(226,232,240,.84)),
-        url('images/bg_1.jpg') center/cover no-repeat;
-      opacity: .98;
+        linear-gradient(90deg, rgba(4,21,14,.48) 0 42%, rgba(4,21,14,.16) 62%, rgba(2,12,8,.05) 100%),
+        url('images/emerald-time-theme-bg.png?v=1') center right/cover no-repeat;
+      opacity: 1;
     }
     body::after{
       content:"";
@@ -82,12 +84,11 @@
       pointer-events: none;
       z-index: -1;
       background:
-        radial-gradient(circle at 82% 30%, rgba(249,115,22,.16) 0 2px, transparent 3px 100%),
-        radial-gradient(circle at 88% 56%, rgba(245,158,11,.12) 0 1px, transparent 2px 100%),
-        repeating-linear-gradient(112deg, rgba(30,41,59,.040) 0 1px, transparent 1px 88px),
-        repeating-linear-gradient(64deg, rgba(15,118,110,.026) 0 1px, transparent 1px 112px),
-        radial-gradient(ellipse at 50% 112%, rgba(15,23,42,.16), transparent 58%);
-      mask-image: linear-gradient(to bottom, #000 0%, transparent 82%);
+        radial-gradient(circle at 86% 18%, rgba(212,175,90,.20) 0 2px, transparent 3px 100%),
+        radial-gradient(ellipse at 72% 30%, rgba(31,185,120,.12), transparent 34%),
+        repeating-linear-gradient(112deg, rgba(212,175,90,.035) 0 1px, transparent 1px 108px),
+        radial-gradient(ellipse at 50% 112%, rgba(15,107,70,.18), transparent 58%);
+      mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent 92%);
     }
 
     /* make anchor jumps land below navbar */
@@ -118,7 +119,7 @@
       left: var(--mx, 50%);
       top: var(--my, 20%);
       transform: translate(-50%,-50%);
-      background: radial-gradient(circle, rgba(249,115,22,.14), rgba(37,99,235,.08), transparent 64%);
+      background: radial-gradient(circle, rgba(31,185,120,.18), rgba(212,175,90,.08), transparent 64%);
       filter: blur(12px);
       opacity: .9;
     }
@@ -142,8 +143,8 @@
       border-radius: 50% 50% 0 0;
       background:
         linear-gradient(180deg, rgba(255,255,255,.64), rgba(255,255,255,0)),
-        radial-gradient(ellipse at center, rgba(15,118,110,.14), rgba(15,23,42,.05) 56%, transparent 70%);
-      border: 1px solid rgba(15,118,110,.12);
+        radial-gradient(ellipse at center, rgba(0,184,217,.18), rgba(124,58,237,.06) 56%, transparent 70%);
+      border: 1px solid rgba(0,184,217,.16);
       box-shadow: inset 0 30px 70px rgba(255,255,255,.65);
     }
     .bg-wrap::after{
@@ -155,28 +156,46 @@
       height: 260px;
       transform: translateX(-50%);
       border-radius: 0 0 999px 999px;
-      border-bottom: 1px solid rgba(29,124,255,.18);
+      border-bottom: 1px solid rgba(124,58,237,.20);
       background:
         radial-gradient(circle at 12% 0%, rgba(255,255,255,.78), transparent 13%),
-        radial-gradient(circle at 38% 0%, rgba(15,118,110,.20), transparent 12%),
-        radial-gradient(circle at 66% 0%, rgba(249,115,22,.16), transparent 13%),
-        radial-gradient(circle at 92% 0%, rgba(15,23,42,.22), transparent 18%);
-      opacity: .48;
+        radial-gradient(circle at 38% 0%, rgba(0,184,217,.28), transparent 12%),
+        radial-gradient(circle at 66% 0%, rgba(239,68,68,.22), transparent 13%),
+        radial-gradient(circle at 92% 0%, rgba(124,58,237,.26), transparent 18%);
+      opacity: .56;
       filter: blur(.2px);
     }
     .grid{
       position:absolute; inset:0;
       background-image:
-        linear-gradient(rgba(30,41,59,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(30,41,59,0.04) 1px, transparent 1px);
+        linear-gradient(rgba(30,41,59,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30,41,59,0.05) 1px, transparent 1px);
       background-size: 52px 52px;
-      opacity:.22;
+      opacity:.28;
       mask-image: linear-gradient(to bottom, #000 0%, transparent 74%);
     }
     .dragon-scene{
       position:absolute;
       inset: 0;
       overflow:hidden;
+      display:none;
+    }
+    .dragon-scene::after{
+      content:"";
+      position:absolute;
+      right: -18vw;
+      top: clamp(145px, 24vh, 260px);
+      width: min(720px, 54vw);
+      height: min(360px, 30vw);
+      background:
+        radial-gradient(ellipse at 10% 48%, rgba(0,184,217,.34), transparent 30%),
+        radial-gradient(ellipse at 30% 44%, rgba(124,58,237,.22), transparent 34%),
+        radial-gradient(ellipse at 54% 48%, rgba(239,68,68,.18), transparent 32%),
+        radial-gradient(ellipse at 74% 58%, rgba(245,158,11,.16), transparent 28%);
+      clip-path: polygon(0 42%, 24% 24%, 52% 34%, 100% 14%, 84% 52%, 100% 88%, 48% 68%, 20% 78%);
+      opacity: .58;
+      filter: blur(24px);
+      animation: dragonBreath 7s ease-in-out infinite alternate;
     }
     .dragon-scene::before{
       content:"";
@@ -186,28 +205,30 @@
       width: min(820px, 58vw);
       height: min(360px, 26vw);
       background:
-        linear-gradient(145deg, transparent 0 18%, rgba(15,23,42,.18) 19% 32%, transparent 33%),
-        linear-gradient(28deg, transparent 0 42%, rgba(15,23,42,.22) 43% 58%, transparent 59%),
-        radial-gradient(ellipse at 54% 78%, rgba(15,23,42,.28), transparent 64%);
+        linear-gradient(145deg, transparent 0 18%, rgba(15,23,42,.42) 19% 32%, transparent 33%),
+        linear-gradient(28deg, transparent 0 42%, rgba(15,23,42,.46) 43% 58%, transparent 59%),
+        radial-gradient(ellipse at 54% 78%, rgba(15,23,42,.42), transparent 64%);
       clip-path: polygon(0 100%, 9% 71%, 18% 76%, 28% 54%, 39% 66%, 49% 30%, 61% 65%, 73% 50%, 84% 72%, 94% 66%, 100% 100%);
-      opacity: .70;
-      filter: blur(.2px);
+      opacity: .22;
+      filter: blur(.1px) drop-shadow(0 38px 60px rgba(15,23,42,.22));
     }
     .dragon-silhouette{
       position:absolute;
-      right: clamp(16px, 8vw, 150px);
-      top: clamp(115px, 18vh, 210px);
-      width: min(520px, 39vw);
-      height: min(270px, 20vw);
-      opacity: .38;
-      filter: drop-shadow(0 34px 55px rgba(15,23,42,.22));
+      right: clamp(8px, 5vw, 90px);
+      top: clamp(105px, 16vh, 185px);
+      width: min(660px, 48vw);
+      height: min(340px, 25vw);
+      opacity: .16;
+      filter:
+        drop-shadow(0 38px 58px rgba(15,23,42,.30))
+        drop-shadow(0 0 32px rgba(0,184,217,.16));
       animation: dragonDrift 12s ease-in-out infinite;
     }
     .dragon-silhouette::before{
       content:"";
       position:absolute;
       inset: 18% 24% 26% 26%;
-      background: linear-gradient(135deg, rgba(15,23,42,.72), rgba(30,41,59,.56));
+      background: linear-gradient(135deg, rgba(15,23,42,.88), rgba(51,65,85,.68));
       clip-path: polygon(12% 58%, 26% 40%, 45% 35%, 59% 26%, 74% 36%, 88% 31%, 78% 46%, 92% 56%, 70% 58%, 60% 75%, 42% 68%, 25% 78%);
       border-radius: 999px;
     }
@@ -215,7 +236,7 @@
       content:"";
       position:absolute;
       inset: 0;
-      background: rgba(15,23,42,.62);
+      background: linear-gradient(135deg, rgba(15,23,42,.86), rgba(30,41,59,.72));
       clip-path: polygon(4% 54%, 25% 14%, 45% 45%, 56% 18%, 96% 50%, 58% 52%, 50% 79%, 42% 52%);
     }
     .ember-field{
@@ -225,11 +246,12 @@
       width: min(760px, 54vw);
       height: 100%;
       background:
-        radial-gradient(circle at 68% 22%, rgba(249,115,22,.38) 0 2px, transparent 3px),
-        radial-gradient(circle at 78% 34%, rgba(245,158,11,.26) 0 1px, transparent 2px),
-        radial-gradient(circle at 62% 58%, rgba(249,115,22,.22) 0 1px, transparent 2px),
-        radial-gradient(circle at 88% 66%, rgba(245,158,11,.18) 0 2px, transparent 3px);
-      opacity: .68;
+        radial-gradient(circle at 68% 22%, rgba(0,184,217,.42) 0 2px, transparent 3px),
+        radial-gradient(circle at 78% 34%, rgba(239,68,68,.38) 0 1px, transparent 2px),
+        radial-gradient(circle at 62% 58%, rgba(245,158,11,.30) 0 1px, transparent 2px),
+        radial-gradient(circle at 88% 66%, rgba(124,58,237,.34) 0 2px, transparent 3px),
+        radial-gradient(circle at 72% 78%, rgba(20,184,166,.28) 0 1px, transparent 2px);
+      opacity: .78;
       animation: emberRise 8s ease-in-out infinite alternate;
     }
     /* Navbar */
@@ -409,8 +431,8 @@
     }
     .hero-content{
       display:grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(380px, .78fr);
-      gap: 48px;
+      grid-template-columns: minmax(0, 1.08fr) minmax(340px, .72fr);
+      gap: 42px;
       align-items:center;
     }
     .hero-badge{
@@ -586,24 +608,39 @@
     }
 
     /* Right hero card */
+    .hero-image{
+      justify-self: end;
+      width: min(100%, 430px);
+    }
     .profile-shell{
-      background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(246,251,255,.76));
-      border: 1px solid var(--line);
-      border-radius: var(--r3);
-      box-shadow: var(--shadow);
-      padding: 16px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.94), rgba(247,251,255,.84)),
+        radial-gradient(circle at 88% 6%, rgba(6,182,212,.14), transparent 34%),
+        radial-gradient(circle at 12% 90%, rgba(139,92,246,.12), transparent 36%);
+      border: 1px solid rgba(15,23,42,.10);
+      border-radius: 26px;
+      box-shadow: 0 22px 60px rgba(15,23,42,.13);
+      padding: 14px;
       position: relative;
       overflow: hidden;
       transform: translateZ(0);
+    }
+    .profile-shell::after{
+      content:"";
+      position:absolute;
+      inset: 0 0 auto;
+      height: 4px;
+      background: linear-gradient(90deg, var(--anime-blue), var(--anime-cyan), var(--accent-emerald), var(--accent-violet));
+      pointer-events:none;
     }
     .profile-shell::before{
       content:"";
       position:absolute;
       inset: 0;
       background:
-        linear-gradient(135deg, rgba(29,124,255,.14), transparent 36%),
-        linear-gradient(315deg, rgba(124,58,237,.15), transparent 44%),
-        radial-gradient(circle at 50% -20%, rgba(255,255,255,.88), transparent 34%);
+        linear-gradient(135deg, rgba(37,99,235,.10), transparent 34%),
+        linear-gradient(315deg, rgba(16,185,129,.10), transparent 42%),
+        radial-gradient(circle at 50% -24%, rgba(255,255,255,.92), transparent 34%);
       pointer-events:none;
     }
     .profile-shell > *{
@@ -612,18 +649,20 @@
     }
     .profile-photo-wrap{
       position: relative;
-      min-height: 360px;
-      border-radius: 22px;
+      height: clamp(260px, 32vw, 318px);
+      border-radius: 20px;
       overflow: hidden;
-      margin-bottom: 16px;
-      background: linear-gradient(135deg, rgba(103,232,249,.20), rgba(29,124,255,.12), rgba(124,58,237,.08));
+      margin-bottom: 14px;
+      background:
+        linear-gradient(135deg, rgba(103,232,249,.18), rgba(37,99,235,.10), rgba(139,92,246,.08));
+      border: 1px solid rgba(15,23,42,.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.82);
     }
     .profile-photo-wrap img{
       width: 100%;
       height: 100%;
-      min-height: 360px;
       object-fit: cover;
-      object-position: center 20%;
+      object-position: center 16%;
       display: block;
       filter: saturate(1.05) contrast(1.02);
     }
@@ -631,16 +670,19 @@
       position: absolute;
       left: 14px;
       bottom: 14px;
+      max-width: calc(100% - 28px);
       display: inline-flex;
       align-items: center;
       gap: 8px;
       border-radius: 999px;
-      padding: 9px 12px;
-      background: rgba(255,255,255,.88);
-      border: 1px solid rgba(255,255,255,.72);
+      padding: 8px 11px;
+      background: rgba(255,255,255,.90);
+      border: 1px solid rgba(15,23,42,.08);
       box-shadow: var(--shadow2);
       font-weight: 900;
       color: rgba(15,23,42,.78);
+      font-size: .82rem;
+      line-height: 1.25;
     }
     .availability-pill::before{
       content:"";
@@ -654,6 +696,7 @@
       display:flex;
       gap: 14px;
       align-items:center;
+      padding: 2px 4px 0;
     }
     .profile-pic{
       width: 84px;
@@ -664,55 +707,58 @@
       box-shadow: 0 10px 22px rgba(11,18,32,.08);
     }
     .profile-top .profile-pic{ display:none; }
-    .p-name{ font-weight: 950; letter-spacing:-.3px; }
-    .p-role{ color: var(--muted2); font-weight: 850; margin-top: 2px; }
-    .p-mini{ margin-top: 6px; font-weight: 900; color: rgba(11,18,32,.72); }
+    .p-name{ font-weight: 950; letter-spacing:-.3px; font-size: 1.05rem; }
+    .p-role{ color: var(--muted2); font-weight: 850; margin-top: 1px; font-size: .9rem; }
+    .p-mini{ margin-top: 4px; font-weight: 900; color: rgba(11,18,32,.72); font-size: .88rem; }
 
     .p-badges{
       display:flex;
       flex-wrap:wrap;
       gap: 8px;
-      margin-top: 14px;
+      margin-top: 12px;
+      padding: 0 4px;
     }
     .p-badges span{
       background: rgba(255,255,255,.72);
       border: 1px solid rgba(15,23,42,.08);
-      padding: 7px 10px;
+      padding: 7px 9px;
       border-radius: 999px;
       font-weight: 900;
-      font-size: .86rem;
+      font-size: .8rem;
       color: rgba(11,18,32,.78);
     }
     .p-actions{
       display:flex;
       gap: 10px;
       margin-top: 14px;
+      padding: 0 4px 2px;
       flex-wrap: wrap;
     }
 
     .profile-metrics{
       display:grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 16px;
+      gap: 8px;
+      margin-top: 14px;
+      padding: 0 4px;
     }
     .profile-metric{
-      padding: 12px 10px;
+      padding: 10px 8px;
       border: 1px solid rgba(15,23,42,.08);
-      border-radius: 18px;
+      border-radius: 16px;
       background: rgba(255,255,255,.70);
       text-align: center;
     }
     .profile-metric strong{
       display:block;
-      font-size: 1.05rem;
+      font-size: .98rem;
       font-weight: 950;
       color: var(--ink);
     }
     .profile-metric span{
       display:block;
       margin-top: 2px;
-      font-size: .76rem;
+      font-size: .7rem;
       font-weight: 850;
       color: var(--muted2);
     }
@@ -1169,9 +1215,10 @@
       .hero-content{ grid-template-columns: 1fr; text-align:center; }
       .hero-description{ margin-left:auto; margin-right:auto; }
       .hero-panel{ margin-left:auto; margin-right:auto; text-align:left; }
+      .hero-image{ justify-self:center; width: min(100%, 430px); }
       .profile-top{ justify-content:center; }
       .hero-stats{ grid-template-columns: 1fr; }
-      .profile-shell{ max-width: 560px; margin: 0 auto; }
+      .profile-shell{ max-width: 430px; margin: 0 auto; }
       .navbar-collapse{
         margin-top: 12px;
         padding: 12px;
@@ -1195,7 +1242,7 @@
       .experience-head{ flex-direction:column; gap: 10px; }
       .experience-date{ white-space: normal; }
       .project-link-row{ align-items:flex-start; flex-direction:column; }
-      .profile-photo-wrap, .profile-photo-wrap img{ min-height: 340px; }
+      .profile-photo-wrap{ height: 280px; }
       .profile-metrics{ grid-template-columns: 1fr; }
       .btn-custom{ width: 100%; }
       .p-actions .btn-custom{ width: auto; flex: 1 1 150px; }
@@ -1286,6 +1333,10 @@
     @keyframes emberRise {
       0% { transform: translateY(18px); opacity: .42; }
       100% { transform: translateY(-20px); opacity: .72; }
+    }
+    @keyframes dragonBreath {
+      0% { transform: translateX(0) scale(.96); opacity: .38; }
+      100% { transform: translateX(-34px) scale(1.05); opacity: .64; }
     }
     @keyframes toolPulse {
       0%, 100% { transform: translateY(0) scale(1); }
@@ -1413,6 +1464,58 @@
         transition-duration: .01ms !important;
       }
     }
+    /* Emerald time theme overrides */
+    .navbar{
+      background: rgba(5,24,16,.82);
+      border-bottom-color: rgba(212,175,90,.22);
+    }
+    .navbar.scrolled{ background: rgba(5,24,16,.94); }
+    .nav-brand,
+    .nav-link{ color: rgba(240,253,244,.86) !important; }
+    .nav-link:hover,
+    .nav-link.active{
+      color: #fff !important;
+      background: rgba(31,185,120,.15);
+    }
+    .navbar-toggler{ background: rgba(255,255,255,.84); }
+    .brand-mark,
+    .btn-primary-custom{
+      background: linear-gradient(135deg, #0b6843, #1fb978 58%, #b99245);
+      box-shadow: 0 14px 34px rgba(3,45,29,.35);
+    }
+    .gradient-text{
+      background: linear-gradient(90deg, #59dfa0, #e0c170);
+      -webkit-background-clip:text;
+      background-clip:text;
+    }
+    .hero-title{ color:#f0fdf4; text-shadow:0 3px 28px rgba(0,0,0,.42); }
+    .hero-description{ color:rgba(236,253,245,.78); text-shadow:0 2px 18px rgba(0,0,0,.5); }
+    .hero-badge,
+    .typing-container{
+      color:rgba(236,253,245,.86);
+      background:rgba(5,35,23,.72);
+      border-color:rgba(212,175,90,.24);
+    }
+    #typing-text{ color:#61dda2; }
+    .btn-outline-custom{
+      color:#f0fdf4 !important;
+      background:rgba(5,35,23,.68);
+      border-color:rgba(212,175,90,.32);
+    }
+    .btn-outline-custom:hover{ background:rgba(31,185,120,.18); border-color:rgba(212,175,90,.5); }
+    .soft{
+      background:rgba(5,28,19,.68);
+      border-color:rgba(212,175,90,.14);
+    }
+    .section-title h2{ color:#ecfdf5; text-shadow:0 2px 20px rgba(0,0,0,.48); }
+    .section-title .title-description{ color:rgba(236,253,245,.72); }
+    .section-title .subtitle{
+      color:#dff8e9;
+      background:rgba(5,35,23,.78);
+      border-color:rgba(212,175,90,.26);
+    }
+    .section-title .subtitle::before{ background:linear-gradient(135deg, #1fb978, #d4af5a); }
+    footer{ background:rgba(3,18,12,.88); color:rgba(236,253,245,.72); }
   </style>
 </head>
 
@@ -1676,6 +1779,77 @@
           <h3>Production Readiness</h3>
           <p>Runbooks, rollout plans and reliability reviews for business-critical fintech systems.</p>
           <span>Runbooks / DR / Uptime</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lifecycle -->
+  <section class="lifecycle-section section">
+    <div class="container">
+      <div class="section-title reveal">
+        <span class="subtitle">Lifecycle</span>
+        <h2>DevOps, SRE &amp; DevSecOps Full Lifecycle</h2>
+        <p class="title-description">A complete delivery loop from planning and secure coding to release, observability, incident response and continuous improvement.</p>
+      </div>
+
+      <figure class="lifecycle-diagram reveal" style="--d:80ms">
+        <img src="images/devsecops-lifecycle-animated.gif" alt="Animated DevSecOps lifecycle diagram showing plan, code, build, test, release, deploy, operate and monitor stages with DevOps, DevSecOps and SRE focus areas">
+        <figcaption>Secure by design, built for reliability, and continuously improving across DevOps, SRE and DevSecOps.</figcaption>
+      </figure>
+
+      <div class="lifecycle-stage">
+        <div class="lifecycle-orbit" aria-hidden="true">
+          <div class="orbit-core">
+            <strong>Platform<br>Engineering</strong>
+            <span>Continuous Reliability</span>
+          </div>
+          <div class="orbit-node node-devops">Cloud Delivery</div>
+          <div class="orbit-node node-devsecops">Security Engineering</div>
+          <div class="orbit-node node-sre">Site Reliability</div>
+        </div>
+
+        <div class="lifecycle-track" aria-label="DevOps SRE DevSecOps lifecycle">
+          <div class="life-step reveal" data-life-step style="--d:0ms">
+            <span>01</span>
+            <strong>Plan</strong>
+            <small>Architecture, backlog, risk, capacity and cost goals.</small>
+          </div>
+          <div class="life-step reveal" data-life-step style="--d:70ms">
+            <span>02</span>
+            <strong>Code</strong>
+            <small>Branch strategy, peer review, IaC modules and standards.</small>
+          </div>
+          <div class="life-step reveal" data-life-step style="--d:140ms">
+            <span>03</span>
+            <strong>Secure</strong>
+            <small>SAST, image scans, secrets control and policy gates.</small>
+          </div>
+          <div class="life-step reveal" data-life-step style="--d:210ms">
+            <span>04</span>
+            <strong>Build</strong>
+            <small>Artifacts, containers, versioning and dependency checks.</small>
+          </div>
+          <div class="life-step reveal" data-life-step style="--d:280ms">
+            <span>05</span>
+            <strong>Release</strong>
+            <small>GitOps sync, approvals, rollout and rollback readiness.</small>
+          </div>
+          <div class="life-step reveal" data-life-step style="--d:350ms">
+            <span>06</span>
+            <strong>Observe</strong>
+            <small>Metrics, logs, traces, alerts and service health signals.</small>
+          </div>
+          <div class="life-step reveal" data-life-step style="--d:420ms">
+            <span>07</span>
+            <strong>Respond</strong>
+            <small>Incident handling, runbooks, RCA and recovery actions.</small>
+          </div>
+          <div class="life-step reveal" data-life-step style="--d:490ms">
+            <span>08</span>
+            <strong>Improve</strong>
+            <small>SLO review, automation backlog and reliability hardening.</small>
+          </div>
         </div>
       </div>
     </div>
@@ -2261,6 +2435,6 @@
 
     // ====================================
   </script>
-  <script src="js/portfolio-enhancements.js" defer></script>
+  <script src="js/portfolio-enhancements.js?v=emerald-dynamic-5" defer></script>
 </body>
 </html>

@@ -13,6 +13,46 @@
     }, { passive: true });
   }
 
+  function createTemporalHud() {
+    const hud = document.createElement('div');
+    hud.className = 'temporal-hud';
+    hud.setAttribute('aria-hidden', 'true');
+    hud.innerHTML = '<i></i><i></i><i></i><span></span>';
+    document.body.prepend(hud);
+  }
+
+  function createCursor() {
+    if (reduceMotion || !window.matchMedia('(pointer: fine)').matches) return;
+
+    const cursor = document.createElement('div');
+    cursor.className = 'time-cursor';
+    cursor.setAttribute('aria-hidden', 'true');
+    document.body.append(cursor);
+
+    let targetX = window.innerWidth / 2;
+    let targetY = window.innerHeight / 2;
+    let currentX = targetX;
+    let currentY = targetY;
+
+    window.addEventListener('pointermove', (event) => {
+      targetX = event.clientX;
+      targetY = event.clientY;
+      cursor.classList.add('is-visible');
+    }, { passive: true });
+
+    document.addEventListener('pointerover', (event) => {
+      cursor.classList.toggle('is-active', Boolean(event.target.closest('a, button, .project-card, .suite-card, .tech-item')));
+    }, { passive: true });
+
+    function renderCursor() {
+      currentX += (targetX - currentX) * 0.16;
+      currentY += (targetY - currentY) * 0.16;
+      cursor.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translate(-50%, -50%)`;
+      requestAnimationFrame(renderCursor);
+    }
+    renderCursor();
+  }
+
   function hideLoader() {
     const loader = document.getElementById('siteLoader');
     if (!loader) return;
@@ -88,9 +128,10 @@
           particle.y,
           particle.radius * 7
         );
-        gradient.addColorStop(0, `rgba(249,115,22,${particle.alpha})`);
-        gradient.addColorStop(0.45, `rgba(245,158,11,${particle.alpha * 0.42})`);
-        gradient.addColorStop(1, 'rgba(249,115,22,0)');
+        gradient.addColorStop(0, `rgba(212,175,90,${particle.alpha})`);
+        gradient.addColorStop(0.34, `rgba(31,185,120,${particle.alpha * 0.54})`);
+        gradient.addColorStop(0.72, `rgba(11,104,67,${particle.alpha * 0.28})`);
+        gradient.addColorStop(1, 'rgba(31,185,120,0)');
 
         context.fillStyle = gradient;
         context.beginPath();
@@ -116,7 +157,7 @@
   function enhanceTiltCards() {
     if (reduceMotion || window.innerWidth < 768) return;
 
-    const cards = document.querySelectorAll('.project-card, .experience-card, .profile-shell, .suite-card');
+    const cards = document.querySelectorAll('.project-card, .experience-card, .profile-shell, .suite-card, .life-step');
     cards.forEach((card) => {
       card.classList.add('tilt-ready');
 
@@ -175,13 +216,118 @@
     }, 1800);
   }
 
+  function animateLifecycleSteps() {
+    const steps = [...document.querySelectorAll('[data-life-step]')];
+    if (!steps.length) return;
+
+    steps.forEach((step) => {
+      step.addEventListener('pointermove', (event) => {
+        const rect = step.getBoundingClientRect();
+        step.style.setProperty('--life-x', `${event.clientX - rect.left}px`);
+        step.style.setProperty('--life-y', `${event.clientY - rect.top}px`);
+      }, { passive: true });
+    });
+
+    if (reduceMotion) return;
+
+    let activeIndex = 0;
+    steps[activeIndex].classList.add('is-active');
+    window.setInterval(() => {
+      steps[activeIndex].classList.remove('is-active');
+      activeIndex = (activeIndex + 1) % steps.length;
+      steps[activeIndex].classList.add('is-active');
+    }, 1450);
+  }
+
+  function animateMetrics() {
+    const metrics = [...document.querySelectorAll(
+      '.stat b, .profile-metric strong, .workflow-step > span, .life-step > span'
+    )];
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const element = entry.target;
+        const original = element.dataset.countValue || element.textContent.trim();
+        element.dataset.countValue = original;
+        const match = original.match(/^(\d+)(.*)$/);
+        if (!match) return observer.unobserve(element);
+
+        const target = Number(match[1]);
+        const suffix = match[2];
+        const digits = match[1].length;
+        const zeroValue = `${match[1].startsWith('0') ? '0'.padStart(digits, '0') : '0'}${suffix}`;
+
+        if (!entry.isIntersecting) {
+          element.dataset.countRunning = 'false';
+          element.dataset.countRunId = String(Number(element.dataset.countRunId || 0) + 1);
+          element.textContent = zeroValue;
+          element.classList.remove('is-counting');
+          return;
+        }
+
+        if (element.dataset.countRunning === 'true') return;
+        element.dataset.countRunning = 'true';
+        const runId = String(Number(element.dataset.countRunId || 0) + 1);
+        element.dataset.countRunId = runId;
+        if (reduceMotion) {
+          element.textContent = original;
+          return;
+        }
+
+        const started = performance.now();
+        const duration = target > 30 ? 1250 : 900;
+        function tick(now) {
+          if (element.dataset.countRunId !== runId) return;
+          const progress = Math.min((now - started) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = Math.round(target * eased);
+          const formatted = digits > 1 && match[1].startsWith('0')
+            ? String(current).padStart(digits, '0')
+            : String(current);
+          element.textContent = `${formatted}${suffix}`;
+          if (progress < 1 && element.dataset.countRunning === 'true') requestAnimationFrame(tick);
+        }
+        element.textContent = zeroValue;
+        element.classList.add('is-counting');
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: .55, rootMargin: '0px 0px -8% 0px' });
+    metrics.forEach((metric) => observer.observe(metric));
+  }
+
+  function enhanceSectionDepth() {
+    if (reduceMotion || window.innerWidth < 768) return;
+    const sections = [...document.querySelectorAll('main section, body > section')];
+    let queued = false;
+
+    function update() {
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        const centerOffset = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
+        section.style.setProperty('--section-shift', `${Math.max(-1, Math.min(1, centerOffset)) * -14}px`);
+      });
+      queued = false;
+    }
+    window.addEventListener('scroll', () => {
+      if (!queued) {
+        queued = true;
+        requestAnimationFrame(update);
+      }
+    }, { passive: true });
+    update();
+  }
+
   function init() {
     hideLoader();
+    createTemporalHud();
     createSpotlight();
+    createCursor();
     createEmberCanvas();
     enhanceTiltCards();
     enhanceMagneticButtons();
     animateWorkflowSteps();
+    animateLifecycleSteps();
+    animateMetrics();
+    enhanceSectionDepth();
   }
 
   if (document.readyState === 'loading') {
